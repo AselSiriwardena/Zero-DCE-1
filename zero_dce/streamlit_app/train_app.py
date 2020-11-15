@@ -1,6 +1,6 @@
 import wandb
 import streamlit as st
-from ..trainer import Trainer
+from .. import plot_result, download_dataset, Trainer
 
 
 def train_app_module():
@@ -25,3 +25,12 @@ def train_app_module():
             initialize_wandb = 'No'
     if initialize_wandb == 'No':
         st.text('Fetching Dataset...')
+        dataset_option = st.selectbox(
+            'Select your Dataset:', (
+                '', 'Zero-DCE Dataset', 'Dark Face Dataset'
+            )
+        )
+        if dataset_option == 'Zero-DCE Dataset':
+            download_dataset(dataset_tag='zero_dce')
+        elif dataset_option == 'Dark Face Dataset':
+            download_dataset(dataset_tag='dark_face')
