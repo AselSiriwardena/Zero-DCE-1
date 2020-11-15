@@ -1,3 +1,4 @@
 .idea/
+wandb/
 zero_dce/__pycache__/
 .DS_Store
